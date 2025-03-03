@@ -2,7 +2,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { LoginPage } from "../auth/pages/LoginPage";
 import { CalendarPage } from "../calendar/pages/CalendarPage";
 const AppRouter = () => {
-  const authStatus = "not-authenticated";
+  const authStatus = "authenticated";
+  //const authStatus = "not-authenticated";
 
   return (
     <Routes>
