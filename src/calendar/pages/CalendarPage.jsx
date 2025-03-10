@@ -1,5 +1,4 @@
 import { Calendar, Views } from "react-big-calendar";
-import { addHours } from "date-fns";
 import { useState } from "react";
 
 import { Navbar } from "../components/Navbar";
@@ -9,37 +8,29 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { getMessagesEs } from "../../helpers/getMessages";
 import { CalendarEvent } from "../components/CalendarEvent";
 import { CalendarModal } from "../components/CalendarModal";
-
-const events = [
-  {
-    title: "Birthday",
-    note: "Buy the cake",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: "#fafafa",
-    user: {
-      _id: "123",
-      name: "Alberto",
-    },
-  },
-];
+import { useUiStore, useCalendarStore } from "../../hooks";
+import { FabAddNew } from "../components/FabAddNew";
+import { FabDelete } from "../components/FabDelete";
 
 export const CalendarPage = () => {
+  const { openDateModal } = useUiStore();
   const [laguage, setLaguage] = useState(false);
-  //const [currentView, setCurrentView] = useState(Views.MONTH);
-  const [lastView, setLastView] = useState(localStorage.getItem("lastView")) || "week";
+  const [lastView, setLastView] =
+    useState(localStorage.getItem("lastView")) || "week";
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  const { events, setActiveEvent } = useCalendarStore();
 
   const onChangeLanguage = () => {
     setLaguage((current) => !current);
   };
 
-  const onDoubleClick = (event) => {
-    console.log({ doubleClick: event });
+  const onDoubleClick = () => {
+    openDateModal();
   };
 
   const onSelectEvent = (event) => {
-    console.log({ click: event });
+    setActiveEvent(event);
   };
 
   const onViewChange = (event) => {
@@ -71,6 +62,8 @@ export const CalendarPage = () => {
         onView={onViewChange}
       />
       <CalendarModal />
+      <FabAddNew />
+      <FabDelete />
     </>
   );
 };
