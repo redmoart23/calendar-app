@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
+    "axios": "^1.8.3",
     "calendar": "file:",
     "date-fns": "^4.1.0",
     "react": "^19.0.0",
