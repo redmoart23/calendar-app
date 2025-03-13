@@ -13,13 +13,10 @@ import { FabDelete } from "../components/FabDelete";
 
 export const CalendarPage = () => {
   const { openDateModal } = useUiStore();
-  const [laguage, setLaguage] = useState(false);
-  const [lastView, setLastView] =
-    useState(localStorage.getItem("lastView")) || "week";
-  const [currentDate, setCurrentDate] = useState(new Date());
-
   const { events, setActiveEvent } = useCalendarStore();
-
+  const [lastView, setLastView] = useState(localStorage.getItem("lastView")  || "week");
+  const [laguage, setLaguage] = useState(false);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const onChangeLanguage = () => {
     setLaguage((current) => !current);
