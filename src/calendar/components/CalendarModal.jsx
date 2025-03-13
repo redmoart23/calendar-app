@@ -5,8 +5,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 
-import "sweetalert2/dist/sweetalert2.min.css";
 import { useCalendarStore, useUiStore } from "../../hooks";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 export const CalendarModal = () => {
   const { isDateModalOpen, closeDateModal } = useUiStore();

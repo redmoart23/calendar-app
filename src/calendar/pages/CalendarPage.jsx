@@ -7,7 +7,6 @@ import { localizer } from "../../helpers/calendarLocalizer";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { getMessagesEs } from "../../helpers/getMessages";
 import { CalendarEvent } from "../components/CalendarEvent";
-import { CalendarModal } from "../components/CalendarModal";
 import { useUiStore, useCalendarStore } from "../../hooks";
 import { FabAddNew } from "../components/FabAddNew";
 import { FabDelete } from "../components/FabDelete";
@@ -20,6 +19,7 @@ export const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const { events, setActiveEvent } = useCalendarStore();
+
 
   const onChangeLanguage = () => {
     setLaguage((current) => !current);
@@ -46,7 +46,7 @@ export const CalendarPage = () => {
         culture={laguage && "es"}
         messages={laguage ? getMessagesEs() : {}}
         localizer={localizer}
-        events={events}
+        events={events || []}
         //defaultView={lastView}
         startAccessor="start"
         endAccessor="end"
@@ -61,7 +61,6 @@ export const CalendarPage = () => {
         onSelectEvent={onSelectEvent}
         onView={onViewChange}
       />
-      <CalendarModal />
       <FabAddNew />
       <FabDelete />
     </>
