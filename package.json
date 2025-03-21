@@ -15,6 +15,7 @@
     "axios": "^1.8.3",
     "calendar": "file:",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
     "react": "^19.0.0",
     "react-big-calendar": "^1.18.0",
     "react-datepicker": "^8.1.0",
